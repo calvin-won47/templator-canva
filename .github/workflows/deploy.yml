@@ -7,12 +7,22 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 2 * * *'
   workflow_dispatch:
     inputs:
       target_site_path:
         description: "可选：只部署到某一个站点的绝对路径 (例如 /www/wwwroot/example.com)"
         required: false
         type: string
+      target_site_url:
+        description: "可选：该站点的完整域名URL (例如 https://example.com)，用于生成sitemap"
+        required: false
+        type: string
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   # --- 作业 1: 构建 React/Vite 应用 ---
@@ -55,12 +65,10 @@ jobs:
     # 在这里手动维护您所有站点的“服务器绝对路径”
     strategy:
       matrix:
-        site_path:
-          # 运行 'create_site.py' 后，您需要来这里添加新站点的路径
-          - /www/wwwroot/xmyxyswkj.com
-          - /www/wwwroot/ganyurencai.com
-          # - /www/wwwroot/client-c.com
-          #... 您可以在这里列出100个
+        site:
+          - { path: /www/wwwroot/xmyxyswkj.com, url: https://xmyxyswkj.com }
+          - { path: /www/wwwroot/ganyurencai.com, url: https://ganyurencai.com }
+          # - { path: /www/wwwroot/client-c.com, url: https://client-c.com }
 
     steps:
       - name: Checkout Code (for seeding config.json)
@@ -83,7 +91,30 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.BAOTA_SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Deploy to ${{ matrix.site_path }} via rsync
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Resolve site config and generate sitemap
+        run: |
+          set -euo pipefail
+          SITE_URL="${{ matrix.site.url }}"
+          DEFAULT_STRAPI_URL=$(jq -r '.basic.strapi_url // ""' public/config.json)
+          DEFAULT_SITE_SLUG=$(jq -r '.basic.strapi_site_slug // ""' public/config.json)
+          STRAPI_URL="$DEFAULT_STRAPI_URL"
+          SITE_SLUG="$DEFAULT_SITE_SLUG"
+
+          ssh ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }} "cat '${{ matrix.site.path }}/config.json' 2>/dev/null" > remote_config.json || true
+          if [ -s remote_config.json ]; then
+            REMOTE_STRAPI_URL=$(jq -r '.basic.strapi_url // empty' remote_config.json)
+            REMOTE_SITE_SLUG=$(jq -r '.basic.strapi_site_slug // empty' remote_config.json)
+            if [ -n "$REMOTE_STRAPI_URL" ]; then STRAPI_URL="$REMOTE_STRAPI_URL"; fi
+            if [ -n "$REMOTE_SITE_SLUG" ]; then SITE_SLUG="$REMOTE_SITE_SLUG"; fi
+          fi
+
+          mkdir -p dist
+          SITE_URL="$SITE_URL" strapi_url="$STRAPI_URL" strapi_site_slug="$SITE_SLUG" node scripts/generate-sitemap.mjs
+
+      - name: Deploy to ${{ matrix.site.path }} via rsync
         run: |
           rsync -rlDz \
             --delete \
@@ -93,7 +124,7 @@ jobs:
             --exclude='.well-known/' \
             --exclude='logs/' \
             --exclude='ssl/' \
-            ./dist/ ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site_path }}
+            ./dist/ ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}
 
       - name: Seed config.json if missing (first-time only)
         run: |
@@ -124,6 +155,35 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.BAOTA_SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Resolve single site config and generate sitemap
+        run: |
+          set -euo pipefail
+          SITE_URL_INPUT="${{ inputs.target_site_url }}"
+          if [ -z "$SITE_URL_INPUT" ]; then
+            SITE_DOMAIN=$(basename "${{ inputs.target_site_path }}")
+            SITE_URL="https://$SITE_DOMAIN"
+          else
+            SITE_URL="$SITE_URL_INPUT"
+          fi
+          DEFAULT_STRAPI_URL=$(jq -r '.basic.strapi_url // ""' public/config.json)
+          DEFAULT_SITE_SLUG=$(jq -r '.basic.strapi_site_slug // ""' public/config.json)
+          STRAPI_URL="$DEFAULT_STRAPI_URL"
+          SITE_SLUG="$DEFAULT_SITE_SLUG"
+
+          ssh ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }} "cat '${{ inputs.target_site_path }}/config.json' 2>/dev/null" > remote_config.json || true
+          if [ -s remote_config.json ]; then
+            REMOTE_STRAPI_URL=$(jq -r '.basic.strapi_url // empty' remote_config.json)
+            REMOTE_SITE_SLUG=$(jq -r '.basic.strapi_site_slug // empty' remote_config.json)
+            if [ -n "$REMOTE_STRAPI_URL" ]; then STRAPI_URL="$REMOTE_STRAPI_URL"; fi
+            if [ -n "$REMOTE_SITE_SLUG" ]; then SITE_SLUG="$REMOTE_SITE_SLUG"; fi
+          fi
+
+          mkdir -p dist
+          SITE_URL="$SITE_URL" strapi_url="$STRAPI_URL" strapi_site_slug="$SITE_SLUG" node scripts/generate-sitemap.mjs
 
       - name: Deploy to ${{ inputs.target_site_path }} via rsync
         run: |
