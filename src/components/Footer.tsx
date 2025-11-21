@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Globe } from 'lucide-react';
+import { useConfig } from '../contexts/ConfigContext';
 
 const footerLinks = {
   Features: ['Magic Studio', 'Magic Write', 'Magic Design', 'Apps', 'Presentations', 'Video'],
@@ -11,12 +12,14 @@ const footerLinks = {
 };
 
 const Footer: React.FC = () => {
+  const cfg = useConfig();
+  const appName = cfg?.basic?.app_name || 'Canva';
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
-            <h3 className="text-2xl font-bold mb-4">Canva</h3>
+            <h3 className="text-2xl font-bold mb-4">{appName}</h3>
           </div>
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
@@ -37,7 +40,7 @@ const Footer: React.FC = () => {
             <span className="text-sm text-gray-400">English (United States)</span>
           </div>
           <div className="text-sm text-gray-500">
-            © 2024 All Rights Reserved, Canva®
+            © 2024 All Rights Reserved, {appName}®
           </div>
         </div>
       </div>

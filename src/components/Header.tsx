@@ -2,9 +2,12 @@
 import React, { useState } from 'react';
 import { Search, Globe, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useConfig } from '../contexts/ConfigContext';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const cfg = useConfig();
+  const appName = cfg?.basic?.app_name || 'Canva';
 
   const navLinks = [
     { name: 'Design spotlight', dropdown: true },
@@ -20,7 +23,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-8">
-            <a href="#" className="text-2xl font-bold text-[#0d0c22]">Canva</a>
+            <Link to="/" className="text-2xl font-bold text-[#0d0c22]">{appName}</Link>
             <nav className="hidden lg:flex items-center space-x-6">
               {navLinks.map((link) => (
                 link.to ? (

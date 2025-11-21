@@ -5,15 +5,48 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Canva AI Assistant Clone</title>
+    <title>正在加载...</title>
     <script>
-      (function(w,d,s,l,i){
-        w[l]=w[l]||[];
-        w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-        var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
-        j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-        f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-58TDPTJ3');
+      window.APP_CONFIG = { basic: { app_name: "加载失败", strapi_url: "", strapi_site_slug: "error" } };
+      try {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/config.json', false);
+        xhr.send(null);
+        if (xhr.status === 200) {
+          window.APP_CONFIG = JSON.parse(xhr.responseText);
+          var cfg = window.APP_CONFIG && window.APP_CONFIG.basic;
+          if (cfg && cfg.seo && cfg.seo.title) document.title = cfg.seo.title;
+          if (cfg && cfg.seo && cfg.seo.description) {
+            var metaDesc = document.querySelector('meta[name="description"]') || document.createElement('meta');
+            metaDesc.setAttribute('name', 'description');
+            metaDesc.setAttribute('content', cfg.seo.description);
+            document.head.appendChild(metaDesc);
+          }
+          if (cfg && cfg.seo && cfg.seo.keywords) {
+            var metaKeywords = document.querySelector('meta[name="keywords"]') || document.createElement('meta');
+            metaKeywords.setAttribute('name', 'keywords');
+            metaKeywords.setAttribute('content', cfg.seo.keywords);
+            document.head.appendChild(metaKeywords);
+          }
+        } else {
+          console.warn('无法加载外部 config.json，将使用默认配置。');
+        }
+      } catch (error) {
+        console.error('加载 config.json 时出错:', error);
+      }
+    </script>
+    <script>
+      (function(){
+        var cfg = window.APP_CONFIG && window.APP_CONFIG.basic;
+        var gtmId = (cfg && cfg.gtmId) || 'GTM-58TDPTJ3';
+        (function(w,d,s,l,i){
+          w[l]=w[l]||[];
+          w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+          var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+          j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+          f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer',gtmId);
+      })();
     </script>
   </head>
   <body>
