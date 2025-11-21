@@ -1,13 +1,16 @@
 
 import React from 'react';
+import { useConfig } from '../contexts/ConfigContext';
 
 const AsSeenOn: React.FC = () => {
-  const logos = ['Forbes', 'The Hollywood Reporter', 'Fast Company', 'The Verge', 'TechCrunch'];
+  const cfg = useConfig();
+  const logos = cfg?.extra?.asSeenOn?.logos || ['Forbes', 'The Hollywood Reporter', 'Fast Company', 'The Verge', 'TechCrunch'];
+  const heading = cfg?.extra?.asSeenOn?.heading || 'AS SEEN ON';
 
   return (
     <section className="py-8 md:py-12 bg-[#F9F9FB]">
       <div className="container mx-auto px-4 text-center">
-        <p className="text-sm font-bold tracking-widest text-gray-500 mb-6">AS SEEN ON</p>
+        <p className="text-sm font-bold tracking-widest text-gray-500 mb-6">{heading}</p>
         <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
           {logos.map((logo) => (
             <span key={logo} className="text-lg font-semibold text-gray-400 italic">{logo}</span>

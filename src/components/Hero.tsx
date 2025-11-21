@@ -6,13 +6,16 @@ const Hero: React.FC = () => {
   const cfg = useConfig();
   const slogan = cfg?.basic?.hero?.slogan || 'Meet your AI-powered design assistant.';
   const heroDesc = cfg?.basic?.hero?.description || 'Go from idea to design in seconds with Magic Design, your AI design generator. Simply describe your idea, and watch it generate a selection of unique, customizable templates.';
+  const ctaText = cfg?.extra?.hero?.ctaText || 'Try Magic Design';
+  const ctaNote = cfg?.extra?.hero?.ctaNote || 'Try Magic Design for free. No credit card required.';
+  const imageAlt = cfg?.extra?.hero?.imageAlt || 'AI design tool interface';
 
   return (
     <section className="relative text-center py-16 md:py-24 px-4 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img
           src="https://picsum.photos/seed/canva-hero/1600/900"
-          alt="AI design tool interface"
+          alt={imageAlt}
           className="w-full h-full object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#F9F9FB] via-transparent to-[#F9F9FB]"></div>
@@ -26,11 +29,11 @@ const Hero: React.FC = () => {
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <button className="w-full sm:w-auto text-lg font-bold text-white bg-gradient-to-r from-canva-purple to-canva-blue px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-shadow">
-            Try Magic Design
+            {ctaText}
           </button>
         </div>
         <p className="mt-4 text-sm text-gray-600">
-          Try Magic Design for free. No credit card required.
+          {ctaNote}
         </p>
       </div>
     </section>

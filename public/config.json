@@ -14,5 +14,70 @@
       "description": "这里是Hero区域的详细描述文本。"
     }
   },
-  "extra": {}
+  "extra": {
+    "header": {
+      "navLinks": [
+        { "name": "Design spotlight", "dropdown": true },
+        { "name": "Business", "dropdown": true },
+        { "name": "Education", "dropdown": true },
+        { "name": "Plans and pricing", "dropdown": true },
+        { "name": "Learn", "dropdown": true },
+        { "name": "Blog", "dropdown": false, "to": "/blog" }
+      ],
+      "searchPlaceholder": "今天你想设计什么？",
+      "buttons": { "login": "登录", "signup": "注册" }
+    },
+    "asSeenOn": {
+      "heading": "AS SEEN ON",
+      "logos": ["Forbes", "The Hollywood Reporter", "Fast Company", "The Verge", "TechCrunch"]
+    },
+    "featuresGrid": {
+      "items": [
+        { "iconKey": "magic-design", "title": "Magic Design", "description": "从文本提示或你的媒体生成独特设计。" },
+        { "iconKey": "magic-write", "title": "Magic Write", "description": "你的 AI 写作助手。" },
+        { "iconKey": "magic-edit", "title": "Magic Edit", "description": "用简单提示在图像中添加、替换或编辑内容。" },
+        { "iconKey": "translate", "title": "Translate", "description": "自动翻译设计中的文本。" },
+        { "iconKey": "magic-eraser", "title": "Magic Eraser", "description": "从照片中移除不需要的对象。" },
+        { "iconKey": "beat-sync", "title": "Beat Sync", "description": "自动将素材与音乐的节拍同步。" }
+      ]
+    },
+    "moreMagic": {
+      "heading": "还有更多 Magic",
+      "description": "发现一整套 AI 工具，帮助你更高效地工作。",
+      "items": [
+        { "iconKey": "presentation", "title": "Magic Presentation", "description": "从一个文本提示生成演示文稿。" },
+        { "iconKey": "video", "title": "Magic Design for Video", "description": "用你的媒体和文本提示创建专业视频。" },
+        { "iconKey": "text-to-image", "title": "Text to Image", "description": "把文字变成独特图像。" }
+      ],
+      "ctaText": "探索所有 AI 功能"
+    },
+    "finalCTA": {
+      "heading": "用 AI 释放你的创造力",
+      "buttonText": "试用 Magic Design"
+    },
+    "faq": {
+      "heading": "Frequently asked questions",
+      "items": [
+        { "question": "什么是 AI 设计生成器？", "answer": "像 Magic Design 这样的 AI 设计生成器可以根据文本提示或你的媒体生成专业级的定制设计。" },
+        { "question": "如何使用 AI 设计生成器？", "answer": "打开 Canva，找到 Magic Design，输入你想创建内容的文本描述，AI 会生成可供选择的设计。" },
+        { "question": "我可以用 AI 设计生成器做什么？", "answer": "你可以创建社交媒体内容、演示文稿、海报、邀请函等多种视觉内容。" },
+        { "question": "AI 设计生成器是否免费？", "answer": "Canva 提供包含部分功能的免费层级，更多高级功能需要订阅 Canva Pro 或 Teams。" }
+      ]
+    },
+    "footer": {
+      "linkGroups": {
+        "Features": ["Magic Studio", "Magic Write", "Magic Design", "Apps", "Presentations", "Video"],
+        "Explore": ["Design types", "Templates", "Graph & chart makers", "Photo editor", "Color palette generator"],
+        "Community": ["Online communities", "Creators", "Canva Represents Fund", "Developers", "Partnerships"],
+        "Download": ["iOS", "Android", "Windows", "Mac"],
+        "Company": ["About", "Newsroom", "Careers", "Sustainability", "Security", "Terms and Privacy"]
+      },
+      "language": "English (United States)"
+    },
+    "hero": {
+      "ctaText": "Try Magic Design",
+      "ctaNote": "Try Magic Design for free. No credit card required.",
+      "imageAlt": "AI design tool interface"
+    }
+  }
 }

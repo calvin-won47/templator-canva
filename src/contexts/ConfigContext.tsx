@@ -20,7 +20,25 @@ export type AppConfig = {
     seo?: SEO;
     hero?: Hero;
   };
-  extra?: Record<string, unknown>;
+  extra?: {
+    hero?: { ctaText?: string; ctaNote?: string; imageAlt?: string };
+    header?: {
+      navLinks?: { name: string; dropdown?: boolean; to?: string }[];
+      searchPlaceholder?: string;
+      buttons?: { login?: string; signup?: string };
+    };
+    asSeenOn?: { heading?: string; logos?: string[] };
+    featuresGrid?: { items?: { iconKey?: string; title?: string; description?: string }[] };
+    moreMagic?: {
+      heading?: string;
+      description?: string;
+      items?: { iconKey?: string; title?: string; description?: string }[];
+      ctaText?: string;
+    };
+    finalCTA?: { heading?: string; buttonText?: string };
+    faq?: { heading?: string; items?: { question: string; answer: string }[] };
+    footer?: { linkGroups?: Record<string, string[]>; language?: string };
+  };
 };
 
 declare global {
