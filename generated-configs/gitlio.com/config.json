@@ -1,0 +1,140 @@
+{
+  "basic": {
+    "app_name": "GitLynx",
+    "strapi_url": "https://2amcreations.com",
+    "strapi_site_slug": "gitlio",
+    "gtmId": "GTM-XXXXXX",
+    "seo": {
+      "title": "GitLynx - Streamline Your Version Control and Collaboration",
+      "description": "GitLynx is the ultimate version control and collaboration platform designed for developers. Enhance your workflow with powerful tools and seamless integration.",
+      "keywords": "version control, collaboration, developers, Git, software development"
+    },
+    "hero": {
+      "slogan": "Unleash Your Development Potential",
+      "description": "Collaborate effortlessly and manage your code with GitLynx. Simplify version control and focus on what matters most – building amazing software."
+    }
+  },
+  "extra": {
+    "header": {
+      "navLinks": [
+        {
+          "name": "Features",
+          "to": "/features"
+        },
+        {
+          "name": "Blog",
+          "to": "/blog"
+        },
+        {
+          "name": "Support",
+          "to": "/support"
+        }
+      ],
+      "searchPlaceholder": "Search...",
+      "buttons": {
+        "login": "Login",
+        "signup": "Sign Up"
+      }
+    },
+    "asSeenOn": {
+      "heading": "Trusted by Leading Developers",
+      "logos": [
+        "logo1.png",
+        "logo2.png",
+        "logo3.png"
+      ]
+    },
+    "featuresGrid": {
+      "items": [
+        {
+          "iconKey": "version-control",
+          "title": "Effortless Version Control",
+          "description": "Track changes and collaborate seamlessly with our intuitive version control system."
+        },
+        {
+          "iconKey": "collaboration",
+          "title": "Real-Time Collaboration",
+          "description": "Work together in real-time with your team, no matter where you are."
+        },
+        {
+          "iconKey": "integration",
+          "title": "Seamless Integrations",
+          "description": "Connect with your favorite tools and streamline your workflow."
+        }
+      ]
+    },
+    "moreMagic": {
+      "heading": "Discover More Magic",
+      "description": "Explore additional features that enhance your development experience.",
+      "items": [
+        {
+          "iconKey": "security",
+          "title": "Top-Notch Security",
+          "description": "Keep your code safe with our industry-leading security measures."
+        },
+        {
+          "iconKey": "analytics",
+          "title": "Powerful Analytics",
+          "description": "Gain insights into your projects with comprehensive analytics tools."
+        },
+        {
+          "iconKey": "support",
+          "title": "24/7 Support",
+          "description": "Get assistance anytime with our dedicated support team."
+        }
+      ],
+      "ctaText": "Learn More"
+    },
+    "finalCTA": {
+      "heading": "Ready to Transform Your Development Process?",
+      "buttonText": "Get Started"
+    },
+    "faq": {
+      "heading": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "What is GitLynx?",
+          "answer": "GitLynx is a version control and collaboration platform designed for developers to streamline their workflows."
+        },
+        {
+          "question": "How does GitLynx improve collaboration?",
+          "answer": "GitLynx offers real-time collaboration tools that allow teams to work together seamlessly, regardless of their location."
+        }
+      ]
+    },
+    "footer": {
+      "linkGroups": {
+        "Features": [
+          "Version Control",
+          "Collaboration",
+          "Integrations"
+        ],
+        "Explore": [
+          "Blog",
+          "Documentation",
+          "Community"
+        ],
+        "Community": [
+          "Forum",
+          "Events",
+          "Meetups"
+        ],
+        "Download": [
+          "Desktop App",
+          "Mobile App"
+        ],
+        "Company": [
+          "About Us",
+          "Careers",
+          "Contact"
+        ]
+      },
+      "language": "English"
+    },
+    "hero": {
+      "ctaText": "Join GitLynx Today",
+      "ctaNote": "No credit card required.",
+      "imageAlt": "GitLynx Platform Screenshot"
+    }
+  }
+}

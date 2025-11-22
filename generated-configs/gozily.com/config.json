@@ -1,0 +1,147 @@
+{
+  "basic": {
+    "app_name": "Goziloop",
+    "strapi_url": "https://2amcreations.com",
+    "strapi_site_slug": "gozily",
+    "gtmId": "GTM-XXXXXX",
+    "seo": {
+      "title": "Goziloop - Discover Unique Lifestyle Products",
+      "description": "Explore Goziloop, the premier e-commerce marketplace for unique lifestyle products that inspire and elevate your everyday living.",
+      "keywords": "e-commerce, marketplace, lifestyle products, unique items, Goziloop"
+    },
+    "hero": {
+      "slogan": "Elevate Your Lifestyle",
+      "description": "Shop unique products that inspire creativity and enhance your everyday experiences."
+    }
+  },
+  "extra": {
+    "header": {
+      "navLinks": [
+        {
+          "name": "Home",
+          "to": "/"
+        },
+        {
+          "name": "Shop",
+          "to": "/shop"
+        },
+        {
+          "name": "Blog",
+          "to": "/blog"
+        },
+        {
+          "name": "About",
+          "to": "/about"
+        }
+      ],
+      "searchPlaceholder": "Search for unique products...",
+      "buttons": {
+        "login": "Log In",
+        "signup": "Sign Up"
+      }
+    },
+    "asSeenOn": {
+      "heading": "As Seen On",
+      "logos": [
+        "logo1.png",
+        "logo2.png",
+        "logo3.png"
+      ]
+    },
+    "featuresGrid": {
+      "items": [
+        {
+          "iconKey": "icon-quality",
+          "title": "Quality Assurance",
+          "description": "We ensure that every product meets our high standards for quality."
+        },
+        {
+          "iconKey": "icon-variety",
+          "title": "Wide Variety",
+          "description": "A diverse selection of unique products to fit every lifestyle."
+        },
+        {
+          "iconKey": "icon-support",
+          "title": "Customer Support",
+          "description": "Our dedicated team is here to assist you with any inquiries."
+        }
+      ]
+    },
+    "moreMagic": {
+      "heading": "Discover More Magic",
+      "description": "Uncover hidden gems that transform your daily routine.",
+      "items": [
+        {
+          "iconKey": "icon-discover",
+          "title": "Discover Unique Finds",
+          "description": "Explore our curated collections of one-of-a-kind items."
+        },
+        {
+          "iconKey": "icon-inspire",
+          "title": "Get Inspired",
+          "description": "Find inspiration for your home and lifestyle with our products."
+        },
+        {
+          "iconKey": "icon-connect",
+          "title": "Join Our Community",
+          "description": "Connect with like-minded individuals who share your passion."
+        }
+      ],
+      "ctaText": "Shop Now"
+    },
+    "finalCTA": {
+      "heading": "Ready to Transform Your Lifestyle?",
+      "buttonText": "Start Shopping"
+    },
+    "faq": {
+      "heading": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "What is Goziloop?",
+          "answer": "Goziloop is an e-commerce marketplace for unique lifestyle products."
+        },
+        {
+          "question": "How do I place an order?",
+          "answer": "Simply browse our products, add to cart, and follow the checkout process."
+        },
+        {
+          "question": "What is your return policy?",
+          "answer": "We offer a 30-day return policy on all eligible items."
+        }
+      ]
+    },
+    "footer": {
+      "linkGroups": {
+        "Features": [
+          "Quality Products",
+          "Customer Support",
+          "Secure Payment"
+        ],
+        "Explore": [
+          "Shop",
+          "Blog",
+          "About"
+        ],
+        "Community": [
+          "Join Us",
+          "Social Media",
+          "Newsletter"
+        ],
+        "Download": [
+          "Mobile App"
+        ],
+        "Company": [
+          "Contact Us",
+          "Careers",
+          "Privacy Policy"
+        ]
+      },
+      "language": "English"
+    },
+    "hero": {
+      "ctaText": "Shop Unique Products",
+      "ctaNote": "Discover items that resonate with your lifestyle.",
+      "imageAlt": "Unique lifestyle products"
+    }
+  }
+}

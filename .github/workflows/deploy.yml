@@ -66,8 +66,11 @@ jobs:
     strategy:
       matrix:
         site:
-          - { path: /www/wwwroot/xmyxyswkj.com, url: https://xmyxyswkj.com }
-          - { path: /www/wwwroot/ganyurencai.com, url: https://ganyurencai.com }
+          - { path: /www/wwwroot/gozily.com, url: https://gozily.com }
+          - { path: /www/wwwroot/sofazy.com, url: https://sofazy.com }
+          - { path: /www/wwwroot/aiplio.com, url: https://aiplio.com }
+          - { path: /www/wwwroot/gitlio.com, url: https://gitlio.com }
+          - { path: /www/wwwroot/biztly.com, url: https://biztly.com }
           # - { path: /www/wwwroot/client-c.com, url: https://client-c.com }
 
     steps:
@@ -103,6 +106,15 @@ jobs:
           STRAPI_URL="$DEFAULT_STRAPI_URL"
           SITE_SLUG="$DEFAULT_SITE_SLUG"
 
+          SITE_DOMAIN=$(basename "${{ matrix.site.path }}")
+          LOCAL_CONFIG="generated-configs/${SITE_DOMAIN}/config.json"
+          if [ -s "$LOCAL_CONFIG" ]; then
+            LOCAL_STRAPI_URL=$(jq -r '.basic.strapi_url // empty' "$LOCAL_CONFIG")
+            LOCAL_SITE_SLUG=$(jq -r '.basic.strapi_site_slug // empty' "$LOCAL_CONFIG")
+            if [ -n "$LOCAL_STRAPI_URL" ]; then STRAPI_URL="$LOCAL_STRAPI_URL"; fi
+            if [ -n "$LOCAL_SITE_SLUG" ]; then SITE_SLUG="$LOCAL_SITE_SLUG"; fi
+          fi
+
           ssh ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }} "cat '${{ matrix.site.path }}/config.json' 2>/dev/null" > remote_config.json || true
           if [ -s remote_config.json ]; then
             REMOTE_STRAPI_URL=$(jq -r '.basic.strapi_url // empty' remote_config.json)
@@ -126,9 +138,15 @@ jobs:
             --exclude='ssl/' \
             ./dist/ ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}
 
-      - name: Seed config.json if missing (first-time only)
+      - name: Upload domain config.json
         run: |
-          rsync -avzr --ignore-existing ./public/config.json ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site_path }}/
+          SITE_DOMAIN=$(basename "${{ matrix.site.path }}")
+          LOCAL_CONFIG="generated-configs/${SITE_DOMAIN}/config.json"
+          if [ -s "$LOCAL_CONFIG" ]; then
+            rsync -avzr "$LOCAL_CONFIG" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}/config.json
+          else
+            rsync -avzr --ignore-existing ./public/config.json ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}/
+          fi
 
   # --- 作业 3: 仅部署到一个指定站点（手动触发用） ---
   deploy_single:
@@ -174,6 +192,14 @@ jobs:
           STRAPI_URL="$DEFAULT_STRAPI_URL"
           SITE_SLUG="$DEFAULT_SITE_SLUG"
 
+          LOCAL_CONFIG="generated-configs/${SITE_DOMAIN}/config.json"
+          if [ -s "$LOCAL_CONFIG" ]; then
+            LOCAL_STRAPI_URL=$(jq -r '.basic.strapi_url // empty' "$LOCAL_CONFIG")
+            LOCAL_SITE_SLUG=$(jq -r '.basic.strapi_site_slug // empty' "$LOCAL_CONFIG")
+            if [ -n "$LOCAL_STRAPI_URL" ]; then STRAPI_URL="$LOCAL_STRAPI_URL"; fi
+            if [ -n "$LOCAL_SITE_SLUG" ]; then SITE_SLUG="$LOCAL_SITE_SLUG"; fi
+          fi
+
           ssh ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }} "cat '${{ inputs.target_site_path }}/config.json' 2>/dev/null" > remote_config.json || true
           if [ -s remote_config.json ]; then
             REMOTE_STRAPI_URL=$(jq -r '.basic.strapi_url // empty' remote_config.json)
@@ -197,6 +223,12 @@ jobs:
             --exclude='ssl/' \
             ./dist/ ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}
 
-      - name: Seed config.json if missing (first-time only)
+      - name: Upload domain config.json
         run: |
-          rsync -avzr --ignore-existing ./public/config.json ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}/
+          SITE_DOMAIN=$(basename "${{ inputs.target_site_path }}")
+          LOCAL_CONFIG="generated-configs/${SITE_DOMAIN}/config.json"
+          if [ -s "$LOCAL_CONFIG" ]; then
+            rsync -avzr "$LOCAL_CONFIG" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}/config.json
+          else
+            rsync -avzr --ignore-existing ./public/config.json ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}/
+          fi

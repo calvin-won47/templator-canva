@@ -1,0 +1,149 @@
+{
+  "basic": {
+    "app_name": "Sofazelle",
+    "strapi_url": "https://2amcreations.com",
+    "strapi_site_slug": "sofazy",
+    "gtmId": "GTM-XXXXXX",
+    "seo": {
+      "title": "Sofazelle - Your Online Marketplace for Cozy Living",
+      "description": "Discover a curated selection of cozy and comfortable lifestyle products at Sofazelle. Transform your space into a haven of relaxation.",
+      "keywords": "cozy, comfortable, lifestyle products, home decor, Sofazelle"
+    },
+    "hero": {
+      "slogan": "Embrace Comfort, Live Cozy",
+      "description": "Explore our unique collection of products designed to enhance your cozy living experience."
+    }
+  },
+  "extra": {
+    "header": {
+      "navLinks": [
+        {
+          "name": "Home",
+          "to": "/"
+        },
+        {
+          "name": "Shop",
+          "to": "/shop"
+        },
+        {
+          "name": "Blog",
+          "to": "/blog"
+        },
+        {
+          "name": "About Us",
+          "to": "/about"
+        },
+        {
+          "name": "Contact",
+          "to": "/contact"
+        }
+      ],
+      "searchPlaceholder": "Search for cozy products...",
+      "buttons": {
+        "login": "Login",
+        "signup": "Sign Up"
+      }
+    },
+    "asSeenOn": {
+      "heading": "As Seen On",
+      "logos": [
+        "logo1.png",
+        "logo2.png",
+        "logo3.png"
+      ]
+    },
+    "featuresGrid": {
+      "items": [
+        {
+          "iconKey": "comfort",
+          "title": "Ultimate Comfort",
+          "description": "Experience unmatched comfort with our carefully selected products."
+        },
+        {
+          "iconKey": "quality",
+          "title": "Top Quality",
+          "description": "We ensure the highest quality standards for all our offerings."
+        },
+        {
+          "iconKey": "design",
+          "title": "Stylish Designs",
+          "description": "Our products not only feel good but look great in your space."
+        }
+      ]
+    },
+    "moreMagic": {
+      "heading": "Discover More Magic",
+      "description": "Unlock the full potential of your cozy lifestyle with our exclusive offerings.",
+      "items": [
+        {
+          "iconKey": "wellness",
+          "title": "Wellness Products",
+          "description": "Enhance your well-being with our range of wellness items."
+        },
+        {
+          "iconKey": "decor",
+          "title": "Home Decor",
+          "description": "Add a touch of elegance and comfort to your home."
+        },
+        {
+          "iconKey": "gifts",
+          "title": "Thoughtful Gifts",
+          "description": "Find the perfect gift for your loved ones."
+        }
+      ],
+      "ctaText": "Shop Now"
+    },
+    "finalCTA": {
+      "heading": "Join the Cozy Revolution",
+      "buttonText": "Get Started"
+    },
+    "faq": {
+      "heading": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "What is Sofazelle?",
+          "answer": "Sofazelle is your go-to online marketplace for cozy and comfortable lifestyle products."
+        },
+        {
+          "question": "How can I place an order?",
+          "answer": "Simply browse our collection, add items to your cart, and proceed to checkout."
+        },
+        {
+          "question": "What is your return policy?",
+          "answer": "We offer a 30-day return policy on all items. Please check our return page for details."
+        }
+      ]
+    },
+    "footer": {
+      "linkGroups": {
+        "Features": [
+          "Comfort Products",
+          "Wellness",
+          "Home Decor"
+        ],
+        "Explore": [
+          "Shop",
+          "Blog",
+          "About Us"
+        ],
+        "Community": [
+          "Contact",
+          "Support"
+        ],
+        "Download": [
+          "Mobile App"
+        ],
+        "Company": [
+          "Careers",
+          "Privacy Policy"
+        ]
+      },
+      "language": "English"
+    },
+    "hero": {
+      "ctaText": "Shop Our Collection",
+      "ctaNote": "Free shipping on orders over $50!",
+      "imageAlt": "Cozy living room with Sofazelle products"
+    }
+  }
+}

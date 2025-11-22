@@ -1,0 +1,144 @@
+{
+  "basic": {
+    "app_name": "Biznexa",
+    "strapi_url": "https://2amcreations.com",
+    "strapi_site_slug": "biztly",
+    "gtmId": "GTM-XXXXXX",
+    "seo": {
+      "title": "Biznexa - Elevate Your Business Networking",
+      "description": "Join Biznexa, the ultimate platform for business networking and collaboration. Connect, share, and grow your professional network.",
+      "keywords": "business networking, collaboration, professional connections, networking platform"
+    },
+    "hero": {
+      "slogan": "Connect. Collaborate. Grow.",
+      "description": "Unlock new opportunities and expand your professional horizons with Biznexa, your go-to platform for business networking."
+    }
+  },
+  "extra": {
+    "header": {
+      "navLinks": [
+        {
+          "name": "Home",
+          "to": "/"
+        },
+        {
+          "name": "Features",
+          "to": "/features"
+        },
+        {
+          "name": "Blog",
+          "to": "/blog"
+        },
+        {
+          "name": "Contact",
+          "to": "/contact"
+        }
+      ],
+      "searchPlaceholder": "Search...",
+      "buttons": {
+        "login": "Log In",
+        "signup": "Sign Up"
+      }
+    },
+    "asSeenOn": {
+      "heading": "As Seen On",
+      "logos": [
+        "logo1.png",
+        "logo2.png",
+        "logo3.png"
+      ]
+    },
+    "featuresGrid": {
+      "items": [
+        {
+          "iconKey": "network",
+          "title": "Expand Your Network",
+          "description": "Connect with industry leaders and like-minded professionals."
+        },
+        {
+          "iconKey": "collaborate",
+          "title": "Seamless Collaboration",
+          "description": "Work together on projects and ideas effortlessly."
+        },
+        {
+          "iconKey": "events",
+          "title": "Exclusive Events",
+          "description": "Participate in webinars and networking events tailored for you."
+        }
+      ]
+    },
+    "moreMagic": {
+      "heading": "More Ways to Connect",
+      "description": "Discover additional features that enhance your networking experience.",
+      "items": [
+        {
+          "iconKey": "insights",
+          "title": "Insights & Analytics",
+          "description": "Gain valuable insights from your networking efforts."
+        },
+        {
+          "iconKey": "resources",
+          "title": "Resources & Tools",
+          "description": "Access a library of resources to aid your business growth."
+        },
+        {
+          "iconKey": "support",
+          "title": "24/7 Support",
+          "description": "Get assistance whenever you need it, day or night."
+        }
+      ],
+      "ctaText": "Explore More"
+    },
+    "finalCTA": {
+      "heading": "Ready to Transform Your Networking?",
+      "buttonText": "Join Biznexa Today"
+    },
+    "faq": {
+      "heading": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "Is Biznexa free to use?",
+          "answer": "Yes, you can join Biznexa for free and explore basic features."
+        },
+        {
+          "question": "How can I connect with others?",
+          "answer": "You can send connection requests and engage in discussions through our platform."
+        }
+      ]
+    },
+    "footer": {
+      "linkGroups": {
+        "Features": [
+          "Networking",
+          "Collaboration",
+          "Events"
+        ],
+        "Explore": [
+          "Blog",
+          "Resources",
+          "Support"
+        ],
+        "Community": [
+          "Forums",
+          "Groups",
+          "Feedback"
+        ],
+        "Download": [
+          "iOS App",
+          "Android App"
+        ],
+        "Company": [
+          "About Us",
+          "Careers",
+          "Privacy Policy"
+        ]
+      },
+      "language": "English"
+    },
+    "hero": {
+      "ctaText": "Get Started Now",
+      "ctaNote": "Join thousands of professionals on Biznexa.",
+      "imageAlt": "Business Networking Image"
+    }
+  }
+}

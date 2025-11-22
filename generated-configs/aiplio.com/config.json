@@ -1,0 +1,151 @@
+{
+  "basic": {
+    "app_name": "AiplioLearn",
+    "strapi_url": "https://2amcreations.com",
+    "strapi_site_slug": "aiplio",
+    "gtmId": "GTM-XXXXXX",
+    "seo": {
+      "title": "AiplioLearn - AI-Powered Learning Platform",
+      "description": "Transform your learning experience with AiplioLearn, the AI-powered platform designed to personalize education and enhance your skills.",
+      "keywords": "AI learning, personalized education, online courses, skill enhancement"
+    },
+    "hero": {
+      "slogan": "Unlock Your Potential with AI",
+      "description": "Experience a revolutionary approach to learning that adapts to your needs and boosts your knowledge.",
+      "ctaText": "Get Started Now",
+      "ctaNote": "Join thousands of learners today!",
+      "imageAlt": "AiplioLearn - AI-Powered Learning"
+    }
+  },
+  "extra": {
+    "header": {
+      "navLinks": [
+        {
+          "name": "Home",
+          "to": "/"
+        },
+        {
+          "name": "Features",
+          "to": "/features"
+        },
+        {
+          "name": "Blog",
+          "to": "/blog"
+        },
+        {
+          "name": "Contact",
+          "to": "/contact"
+        }
+      ],
+      "searchPlaceholder": "Search for courses...",
+      "buttons": {
+        "login": "Login",
+        "signup": "Sign Up"
+      }
+    },
+    "asSeenOn": {
+      "heading": "Featured In",
+      "logos": [
+        "logo1.png",
+        "logo2.png",
+        "logo3.png"
+      ]
+    },
+    "featuresGrid": {
+      "items": [
+        {
+          "iconKey": "personalized-learning",
+          "title": "Personalized Learning",
+          "description": "Tailored courses that adapt to your learning style."
+        },
+        {
+          "iconKey": "interactive-content",
+          "title": "Interactive Content",
+          "description": "Engaging materials to enhance your understanding."
+        },
+        {
+          "iconKey": "expert-instructors",
+          "title": "Expert Instructors",
+          "description": "Learn from industry leaders and experienced educators."
+        }
+      ]
+    },
+    "moreMagic": {
+      "heading": "Experience the Magic of AI",
+      "description": "Discover how our advanced AI technology can transform your learning journey.",
+      "items": [
+        {
+          "iconKey": "real-time-feedback",
+          "title": "Real-Time Feedback",
+          "description": "Get instant insights to improve your performance."
+        },
+        {
+          "iconKey": "community-support",
+          "title": "Community Support",
+          "description": "Join a vibrant community of learners and educators."
+        },
+        {
+          "iconKey": "flexible-scheduling",
+          "title": "Flexible Scheduling",
+          "description": "Learn at your own pace, anytime and anywhere."
+        }
+      ],
+      "ctaText": "Explore More Features"
+    },
+    "finalCTA": {
+      "heading": "Ready to Transform Your Learning?",
+      "buttonText": "Join AiplioLearn"
+    },
+    "faq": {
+      "heading": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "What is AiplioLearn?",
+          "answer": "AiplioLearn is an AI-powered learning platform that personalizes education to enhance your skills."
+        },
+        {
+          "question": "How does the AI work?",
+          "answer": "Our AI analyzes your learning patterns to recommend courses and materials tailored to you."
+        },
+        {
+          "question": "Can I learn at my own pace?",
+          "answer": "Yes! AiplioLearn allows you to learn at your convenience, fitting into your schedule."
+        }
+      ]
+    },
+    "footer": {
+      "linkGroups": {
+        "Features": [
+          "Personalized Learning",
+          "Interactive Content",
+          "Expert Instructors"
+        ],
+        "Explore": [
+          "Blog",
+          "Community",
+          "Resources"
+        ],
+        "Community": [
+          "Forums",
+          "Events",
+          "Support"
+        ],
+        "Download": [
+          "iOS App",
+          "Android App"
+        ],
+        "Company": [
+          "About Us",
+          "Careers",
+          "Privacy Policy"
+        ]
+      },
+      "language": "English"
+    },
+    "hero": {
+      "ctaText": "Try Magic Design",
+      "ctaNote": "Try Magic Design for free. No credit card required.",
+      "imageAlt": "AI design tool interface"
+    }
+  }
+}
