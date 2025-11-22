@@ -9,14 +9,15 @@ const Header: React.FC = () => {
   const cfg = useConfig();
   const appName = cfg?.basic?.app_name || 'Canva';
 
-  const navLinks = [
+  const headerCfg = cfg?.extra?.header;
+  const navLinks: { name: string; dropdown?: boolean; to?: string }[] = headerCfg?.navLinks ?? [
     { name: 'Design spotlight', dropdown: true },
     { name: 'Business', dropdown: true },
     { name: 'Education', dropdown: true },
     { name: 'Plans and pricing', dropdown: true },
     { name: 'Learn', dropdown: true },
     { name: 'Blog', dropdown: false, to: '/blog' },
-  ] as const;
+  ];
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -45,15 +46,15 @@ const Header: React.FC = () => {
               <Search className="text-gray-500 w-5 h-5" />
               <input
                 type="text"
-                placeholder="What will you design today?"
+                placeholder={headerCfg?.searchPlaceholder || "What will you design today?"}
                 className="bg-transparent ml-2 w-full text-sm focus:outline-none"
               />
             </div>
             <button className="p-2 rounded-full hover:bg-gray-100">
               <Globe className="w-5 h-5 text-gray-600" />
             </button>
-            <button className="hidden md:block text-sm font-bold text-gray-600 hover:text-gray-900 px-4 py-2 rounded-full hover:bg-gray-100">Log in</button>
-            <button className="hidden md:block text-sm font-bold text-white bg-canva-purple px-4 py-2 rounded-full">Sign up</button>
+            <button className="hidden md:block text-sm font-bold text-gray-600 hover:text-gray-900 px-4 py-2 rounded-full hover:bg-gray-100">{headerCfg?.buttons?.login || "Log in"}</button>
+            <button className="hidden md:block text-sm font-bold text-white bg-canva-purple px-4 py-2 rounded-full">{headerCfg?.buttons?.signup || "Sign up"}</button>
             <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -82,13 +83,13 @@ const Header: React.FC = () => {
               <Search className="text-gray-500 w-5 h-5" />
               <input
                 type="text"
-                placeholder="What will you design today?"
+                placeholder={headerCfg?.searchPlaceholder || "What will you design today?"}
                 className="bg-transparent ml-2 w-full text-sm focus:outline-none"
               />
             </div>
             <div className="flex space-x-2 pt-4 border-t">
-              <button className="w-full text-sm font-bold text-gray-600 hover:text-gray-900 px-4 py-2 rounded-full border border-gray-300">Log in</button>
-              <button className="w-full text-sm font-bold text-white bg-canva-purple px-4 py-2 rounded-full">Sign up</button>
+              <button className="w-full text-sm font-bold text-gray-600 hover:text-gray-900 px-4 py-2 rounded-full border border-gray-300">{headerCfg?.buttons?.login || "Log in"}</button>
+              <button className="w-full text-sm font-bold text-white bg-canva-purple px-4 py-2 rounded-full">{headerCfg?.buttons?.signup || "Sign up"}</button>
             </div>
           </div>
         </div>
