@@ -97,7 +97,7 @@ jobs:
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Resolve site config and generate sitemap
+      - name: Resolve site config, generate sitemap and blog fallbacks
         run: |
           set -euo pipefail
           SITE_URL="${{ matrix.site.url }}"
@@ -124,7 +124,11 @@ jobs:
           fi
 
           mkdir -p dist
+          RESOLVED_CONFIG_PATH="resolved-config.json"
+          jq -n --arg strapi_url "$STRAPI_URL" --arg site_slug "$SITE_SLUG" '{basic:{strapi_url:$strapi_url,strapi_site_slug:$site_slug}}' > "$RESOLVED_CONFIG_PATH"
+
           SITE_URL="$SITE_URL" strapi_url="$STRAPI_URL" strapi_site_slug="$SITE_SLUG" node scripts/generate-sitemap.mjs
+          CONFIG_PATH="$RESOLVED_CONFIG_PATH" STRAPI_API_TOKEN="${{ secrets.STRAPI_API_TOKEN }}" node scripts/generate-blog-fallbacks.mjs
 
       - name: Deploy to ${{ matrix.site.path }} via rsync
         run: |
@@ -177,7 +181,7 @@ jobs:
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Resolve single site config and generate sitemap
+      - name: Resolve single site config, generate sitemap and blog fallbacks
         run: |
           set -euo pipefail
           SITE_URL_INPUT="${{ inputs.target_site_url }}"
@@ -209,7 +213,11 @@ jobs:
           fi
 
           mkdir -p dist
+          RESOLVED_CONFIG_PATH="resolved-config.json"
+          jq -n --arg strapi_url "$STRAPI_URL" --arg site_slug "$SITE_SLUG" '{basic:{strapi_url:$strapi_url,strapi_site_slug:$site_slug}}' > "$RESOLVED_CONFIG_PATH"
+
           SITE_URL="$SITE_URL" strapi_url="$STRAPI_URL" strapi_site_slug="$SITE_SLUG" node scripts/generate-sitemap.mjs
+          CONFIG_PATH="$RESOLVED_CONFIG_PATH" STRAPI_API_TOKEN="${{ secrets.STRAPI_API_TOKEN }}" node scripts/generate-blog-fallbacks.mjs
 
       - name: Deploy to ${{ inputs.target_site_path }} via rsync
         run: |
